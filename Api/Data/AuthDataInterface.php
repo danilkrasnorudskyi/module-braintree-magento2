@@ -13,7 +13,7 @@ interface AuthDataInterface
      *
      * @return string|null
      */
-    public function getClientToken();
+    public function getClientToken(): string;
 
     /**
      * Merchant display name
@@ -32,7 +32,7 @@ interface AuthDataInterface
     /**
      * @return bool
      */
-    public function getIsLoggedIn(): bool;
+    public function isLoggedIn(): bool;
 
     /**
      * Get current store code
