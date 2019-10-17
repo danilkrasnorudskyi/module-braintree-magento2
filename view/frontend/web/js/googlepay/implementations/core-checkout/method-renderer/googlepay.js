@@ -68,6 +68,7 @@ define([
          * @returns null|string
          */
         getClientToken: function () {
+            // @todo convert to promise
             return window.checkoutConfig.payment[this.getCode()].clientToken;
         },
 

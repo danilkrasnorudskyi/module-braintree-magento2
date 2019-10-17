@@ -39,6 +39,7 @@ define([
             this.clientToken = value;
         },
         getClientToken: function () {
+            // @todo convert to promise
             return this.clientToken;
         },
 

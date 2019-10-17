@@ -22,7 +22,6 @@ define(
 
             defaults: {
                 id: null,
-                clientToken: null,
                 quoteId: 0,
                 displayName: null,
                 actionSuccess: null,
@@ -42,7 +41,6 @@ define(
 
                 var api = new buttonApi();
                 api.setGrandTotalAmount(parseFloat(this.grandTotalAmount).toFixed(2));
-                api.setClientToken(this.clientToken);
                 api.setDisplayName(this.displayName);
                 api.setQuoteId(this.quoteId);
                 api.setActionSuccess(this.actionSuccess);

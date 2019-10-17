@@ -22,7 +22,6 @@ define(
 
             defaults: {
                 id: null,
-                clientToken: null,
                 merchantId: null,
                 currencyCode: null,
                 actionSuccess: null,
@@ -40,7 +39,6 @@ define(
                 var api = new buttonApi();
                 api.setEnvironment(this.environment);
                 api.setCurrencyCode(this.currencyCode);
-                api.setClientToken(this.clientToken);
                 api.setMerchantId(this.merchantId);
                 api.setActionSuccess(this.actionSuccess);
                 api.setAmount(this.amount);

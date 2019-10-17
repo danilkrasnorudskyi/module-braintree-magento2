@@ -50,11 +50,6 @@ define(
                 /**
                  * {String}
                  */
-                clientToken: null,
-
-                /**
-                 * {String}
-                 */
                 payeeEmail: null,
 
                 /**
@@ -148,7 +143,7 @@ define(
 
             initCallback: function (data) {
                 braintree.create({
-                    authorization: this.clientToken,
+                    authorization: '', // @todo get token from promise
                 }, function (clientErr, clientInstance) {
                     if (clientErr) {
                         console.error('paypalCheckout error', clientErr);

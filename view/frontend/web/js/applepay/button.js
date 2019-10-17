@@ -49,6 +49,7 @@ define(
                 }
 
                 // init braintree api
+                // @todo convert to promise for token
                 braintree.create({
                     authorization: context.getClientToken()
                 }, function (clientErr, clientInstance) {
