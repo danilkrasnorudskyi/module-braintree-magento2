@@ -7,7 +7,6 @@ use Magento\Braintree\Api\Data\AuthDataInterface;
 /**
  * Interface AuthInterface
  * @api
- * @author Aidan Threadgold <aidan@gene.co.uk>
  */
 interface AuthInterface
 {

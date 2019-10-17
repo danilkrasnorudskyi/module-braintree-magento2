@@ -5,7 +5,6 @@ namespace Magento\Braintree\Api\Data;
 /**
  * Interface AuthDataInterface
  * @api
- * @author Aidan Threadgold <aidan@gene.co.uk>
  */
 interface AuthDataInterface
 {
@@ -21,7 +20,7 @@ interface AuthDataInterface
      *
      * @return string
      */
-    public function getDisplayName(): string;
+    public function getApplePayDisplayName(): string;
 
     /**
      * URL To success page
@@ -33,7 +32,7 @@ interface AuthDataInterface
     /**
      * @return bool
      */
-    public function isLoggedIn(): bool;
+    public function getIsLoggedIn(): bool;
 
     /**
      * Get current store code
@@ -56,7 +55,7 @@ interface AuthDataInterface
      * @param string $value
      * @return string|null
      */
-    public function setDisplayName($value);
+    public function setApplePayDisplayName($value);
 
     /**
      * Set URL To success page

@@ -12,27 +12,27 @@ use Magento\Braintree\Api\Data\AuthDataInterface;
 class Data implements AuthDataInterface
 {
     /**
-     * @var string $clientToken
+     * @var string
      */
     private $clientToken;
 
     /**
-     * @var string $displayName
+     * @var string
      */
     private $displayName;
 
     /**
-     * @var string $actionSuccess
+     * @var string
      */
     private $actionSuccess;
 
     /**
-     * @var bool $isLoggedIn
+     * @var bool
      */
     private $isLoggedIn;
 
     /**
-     * @var string $storeCode
+     * @var string
      */
     private $storeCode;
 
@@ -47,7 +47,7 @@ class Data implements AuthDataInterface
     /**
      * @inheritdoc
      */
-    public function getDisplayName(): string
+    public function getApplePayDisplayName()
     {
         return $this->displayName;
     }
@@ -55,7 +55,7 @@ class Data implements AuthDataInterface
     /**
      * @inheritdoc
      */
-    public function getActionSuccess(): string
+    public function getActionSuccess()
     {
         return $this->actionSuccess;
     }
@@ -63,7 +63,7 @@ class Data implements AuthDataInterface
     /**
      * @inheritdoc
      */
-    public function isLoggedIn(): bool
+    public function getIsLoggedIn()
     {
         return $this->isLoggedIn;
     }
@@ -71,7 +71,7 @@ class Data implements AuthDataInterface
     /**
      * @inheritdoc
      */
-    public function getStoreCode(): string
+    public function getStoreCode()
     {
         return $this->storeCode;
     }
@@ -87,7 +87,7 @@ class Data implements AuthDataInterface
     /**
      * @inheritdoc
      */
-    public function setDisplayName($value)
+    public function setApplePayDisplayName($value)
     {
         $this->displayName = $value;
     }

@@ -1,65 +1,64 @@
 <?php
 
-namespace Magento\Braintree\Model\ApplePay;
+namespace Magento\Braintree\Model;
 
 use Magento\Braintree\Api\AuthInterface;
 use Magento\Braintree\Api\Data\AuthDataInterface;
-use Magento\Braintree\Api\Data\AuthDataInterfaceFactory;
 use Magento\Customer\Model\Session as CustomerSession;
-use Magento\Framework\Exception\InputException;
-use Magento\Framework\Exception\NoSuchEntityException;
 use Magento\Framework\UrlInterface;
 use Magento\Store\Model\StoreManagerInterface;
 
-/**
- * Class Auth
- * @package Magento\Braintree\Model\ApplePay
- * @author Aidan Threadgold <aidan@gene.co.uk>
- */
 class Auth implements AuthInterface
 {
     /**
-     * @var AuthDataInterfaceFactory $authData
+     * @var \Magento\Braintree\Api\Data\AuthDataInterfaceFactory
      */
     private $authData;
 
     /**
-     * @var Ui\ConfigProvider $configProvider
+     * @var ApplePay\Ui\ConfigProvider
+     */
+    private $applePayConfigProvider;
+
+    /**
+     * @var Ui\ConfigProvider
      */
     private $configProvider;
 
     /**
-     * @var UrlInterface $url
+     * @var \Magento\Framework\UrlInterface
      */
     private $url;
 
     /**
-     * @var CustomerSession $customerSession
+     * @var CustomerSession
      */
     private $customerSession;
 
     /**
-     * @var StoreManagerInterface $storeManager
+     * @var StoreManagerInterface
      */
     private $storeManager;
 
     /**
-     * Auth constructor
-     *
-     * @param AuthDataInterfaceFactory $authData
+     * Auth constructor.
+     * @param \Magento\Braintree\Api\Data\AuthDataInterfaceFactory $authData
+     * @param ApplePay\Ui\ConfigProvider $applePayConfigProvider
      * @param Ui\ConfigProvider $configProvider
      * @param UrlInterface $url
      * @param CustomerSession $customerSession
      * @param StoreManagerInterface $storeManagerInterface
      */
     public function __construct(
-        AuthDataInterfaceFactory $authData,
+        \Magento\Braintree\Api\Data\AuthDataInterfaceFactory $authData,
+        ApplePay\Ui\ConfigProvider $applePayConfigProvider,
         Ui\ConfigProvider $configProvider,
         UrlInterface $url,
         CustomerSession $customerSession,
         StoreManagerInterface $storeManagerInterface
     ) {
         $this->authData = $authData;
+        $this->applePayConfigProvider = $applePayConfigProvider;
         $this->configProvider = $configProvider;
         $this->url = $url;
         $this->customerSession = $customerSession;
@@ -68,61 +67,41 @@ class Auth implements AuthInterface
 
     /**
      * @inheritdoc
-     * @throws InputException
-     * @throws NoSuchEntityException
      */
     public function get(): AuthDataInterface
     {
-        /** @var AuthDataInterface $data */
+        /** @var $data \Magento\Braintree\Api\Data\AuthDataInterface */
         $data = $this->authData->create();
         $data->setClientToken($this->getClientToken());
-        $data->setDisplayName($this->getDisplayName());
+        $data->setApplePayDisplayName($this->getApplePayDisplayName());
         $data->setActionSuccess($this->getActionSuccess());
-        $data->setIsLoggedIn($this->isLoggedIn());
+        $data->setIsLoggedIn($this->getIsLoggedIn());
         $data->setStoreCode($this->getStoreCode());
 
         return $data;
     }
 
-    /**
-     * @return string|null
-     * @throws InputException
-     * @throws NoSuchEntityException
-     */
     protected function getClientToken()
     {
         return $this->configProvider->getClientToken();
     }
 
-    /**
-     * @return string|null
-     */
-    protected function getDisplayName()
+    protected function getApplePayDisplayName()
     {
-        return $this->configProvider->getMerchantName();
+        return $this->applePayConfigProvider->getMerchantName();
     }
 
-    /**
-     * @return string
-     */
-    protected function getActionSuccess(): string
+    protected function getActionSuccess()
     {
         return $this->url->getUrl('checkout/onepage/success', ['_secure' => true]);
     }
 
-    /**
-     * @return bool
-     */
-    protected function isLoggedIn(): bool
+    protected function getIsLoggedIn()
     {
         return (bool) $this->customerSession->isLoggedIn();
     }
 
-    /**
-     * @return string
-     * @throws NoSuchEntityException
-     */
-    protected function getStoreCode(): string
+    protected function getStoreCode()
     {
         return $this->storeManager->getStore()->getCode();
     }

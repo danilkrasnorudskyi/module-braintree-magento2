@@ -1029,8 +1029,8 @@
     </virtualType>
 
     <!-- Preferences -->
-    <preference for="Magento\Braintree\Api\AuthInterface" type="Magento\Braintree\Model\ApplePay\Auth" />
-    <preference for="Magento\Braintree\Api\Data\AuthDataInterface" type="Magento\Braintree\Model\ApplePay\Auth\Data" />
+    <preference for="Magento\Braintree\Api\AuthInterface" type="Magento\Braintree\Model\Auth" />
+    <preference for="Magento\Braintree\Api\Data\AuthDataInterface" type="Magento\Braintree\Model\Auth\Data" />
     <preference for="Magento\Braintree\Api\Data\CreditPriceDataInterface" type="Magento\Braintree\Model\CreditPrice" />
     <preference for="Magento\Braintree\Api\CreditPriceRepositoryInterface" type="Magento\Braintree\Model\ResourceModel\CreditPriceRepository" />
 

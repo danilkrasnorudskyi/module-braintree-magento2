@@ -82,7 +82,7 @@ abstract class AbstractButton extends Template
      */
     public function getMerchantName(): string
     {
-        return $this->auth->getDisplayName();
+        return $this->auth->getApplePayDisplayName();
     }
 
     /**
