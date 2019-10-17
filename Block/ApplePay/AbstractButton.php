@@ -86,18 +86,6 @@ abstract class AbstractButton extends Template
     }
 
     /**
-     * Braintree's API token
-     *
-     * @return string|null
-     * @throws InputException
-     * @throws NoSuchEntityException
-     */
-    public function getClientToken()
-    {
-        return $this->auth->getClientToken();
-    }
-
-    /**
      * URL To success page
      *
      * @return string

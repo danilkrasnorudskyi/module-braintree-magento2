@@ -219,16 +219,6 @@ class Button extends Template implements ShortcutInterface
     }
 
     /**
-     * @return string|null
-     * @throws InputException
-     * @throws NoSuchEntityException
-     */
-    public function getClientToken()
-    {
-        return $this->configProvider->getClientToken();
-    }
-
-    /**
      * @return string
      */
     public function getActionSuccess(): string

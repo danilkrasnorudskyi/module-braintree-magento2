@@ -18,7 +18,6 @@ try {
 $config = [
     'Magento_Braintree/js/applepay/implementations/shortcut' => [
         'id' => $id,
-        'clientToken' => $block->getClientToken(),
         'quoteId' => $block->getQuoteId(),
         'displayName' => $block->getMerchantName(),
         'actionSuccess' => $block->getActionSuccess(),

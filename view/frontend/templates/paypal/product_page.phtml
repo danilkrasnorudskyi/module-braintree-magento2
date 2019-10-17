@@ -19,7 +19,6 @@ $config = [
     'Magento_Braintree/js/paypal/product-page' => [
         'id' => $paypalId,
         'environment' => $block->getEnvironment(),
-        'clientToken' => $block->getClientToken(),
         'displayName' => $block->getMerchantName(),
         'payeeEmail' => $block->getPayeeEmail(),
         'actionSuccess' => $block->getActionSuccess(),
@@ -37,7 +36,6 @@ if ($block->isCreditActive()) {
         'Magento_Braintree/js/paypal/product-page' => [
             'id' => $paypalCreditId,
             'environment' => $block->getEnvironment(),
-            'clientToken' => $block->getClientToken(),
             'displayName' => $block->getMerchantName(),
             'payeeEmail' => $block->getPayeeEmail(),
             'actionSuccess' => $block->getActionSuccess(),
